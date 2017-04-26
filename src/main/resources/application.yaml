@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: myretail
+  data:
+    cassandra:
+      keyspace-name: myretail
+      contact-points: localhost
+logging: 
+  level:
+    ROOT: INFO
+    
+hystrix:
+    threadpool.default.coreSize: 20
+    threadpool.HystrixThreadPoolKey.coreSize: 20
+    command:
+        processPayeeCmdKey:
+           sleepWindowInMilliseconds: 5000
+           requestVolumeThreshold: 20
+           errorThresholdPercentage: 50
+           execution.isolation.thread.timeoutInMilliseconds: 20000
+      
