@@ -15,7 +15,7 @@ hystrix:
     threadpool.default.coreSize: 20
     threadpool.HystrixThreadPoolKey.coreSize: 20
     command:
-        processPayeeCmdKey:
+        redSkyCmdKey:
            sleepWindowInMilliseconds: 5000
            requestVolumeThreshold: 20
            errorThresholdPercentage: 50
