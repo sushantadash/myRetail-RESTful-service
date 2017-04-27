@@ -28,20 +28,32 @@ import com.target.myretail.domain.Price;
 import com.target.myretail.domain.Product;
 import com.target.myretail.service.ProductService;
 
+/**
+ * The Class ProductApplicationTest.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ProductApplicationTest {
 	
+	/** The mock mvc. */
 	MockMvc mockMvc;
 	
+	/** The product application. */
 	@InjectMocks
 	ProductApplication productApplication;
 	
+	/** The product service. */
 	@Mock
 	ProductService productService;
 	
+	/** The product. */
 	Product product;
 	
+	/** The price. */
 	Price price;
+	
+	/**
+	 * Sets the up.
+	 */
 	@Before
 	public void setUp(){
 		
@@ -58,6 +70,12 @@ public class ProductApplicationTest {
 		
 	}
 
+	/**
+	 * Gets the product by id success test.
+	 *
+	 * @return the product by id success test
+	 * @throws Exception the exception
+	 */
 	@Test
 	public void getProductById_SuccessTest() throws Exception{
 		
@@ -74,6 +92,11 @@ public class ProductApplicationTest {
 		
 	}
 	
+	/**
+	 * Update product price by id success test.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	public void updateProductPriceById_SuccessTest() throws Exception{
 		

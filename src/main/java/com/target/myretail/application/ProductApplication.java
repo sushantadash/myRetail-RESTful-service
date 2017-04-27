@@ -22,18 +22,29 @@ import com.target.myretail.exception.ProductException;
 import com.target.myretail.service.ProductService;
 
 /**
- * @author sushantakumar
+ * The Class ProductApplication.
  *
+ * @author sushantakumar
+ * This is gateway controller class. It receives product Id and returns Product information to end user. 
  */
 @RestController
 @RequestMapping("/product")
 public class ProductApplication {
 
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(ProductApplication.class);
 
+	/** The product service. */
 	@Autowired
 	ProductService productService;
 
+	/**
+	 * Gets the product by id.
+	 *
+	 * @param id the id
+	 * @return the product by id
+	 * @throws ProductException the product exception
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Product> getProductById(@PathVariable Integer id) throws ProductException {
 
@@ -49,6 +60,14 @@ public class ProductApplication {
 		return new ResponseEntity<Product>(product, HttpStatus.OK);
 	}
 
+	/**
+	 * Update product price by id.
+	 *
+	 * @param id the id
+	 * @param product the product
+	 * @return the response entity
+	 * @throws ProductException the product exception
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Product> updateProductPriceById(@PathVariable Integer id,
 			@RequestBody @Validated Product product) throws ProductException {

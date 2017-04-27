@@ -31,29 +31,45 @@ import com.target.myretail.infrastructure.data.ProductPriceRepository;
 import com.target.myretail.integrator.ProductIntegrator;
 
 /**
- * @author sushantakumar
+ * The Class ProductServiceTest.
  *
+ * @author sushantakumar
  */
 
 public class ProductServiceTest {
 	
+	/** The product service. */
 	@InjectMocks
 	ProductService productService;
 	
+	/** The product integrator. */
 	@Mock
 	ProductIntegrator productIntegrator;
 	
+	/** The product price repository. */
 	@Mock
 	ProductPriceRepository productPriceRepository;
 	
+	/** The mapper. */
 	ObjectMapper mapper;	
 	
+	/** The red sky product. */
 	RedSkyProduct redSkyProduct;
 	
+	/** The price. */
 	Price price;
 	
+	/** The product. */
 	Product product;
 	
+	/**
+	 * Setup.
+	 *
+	 * @throws JsonParseException the json parse exception
+	 * @throws JsonMappingException the json mapping exception
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Before
 	public void setup() throws JsonParseException, JsonMappingException, FileNotFoundException, IOException{
 		MockitoAnnotations.initMocks(this);
@@ -63,7 +79,7 @@ public class ProductServiceTest {
 		price = new Price();
 		product = new Product();
 		
-		price.setProduct_id(13860428);
+		price.setProductId(13860428);
 		price.setCurrency_code("USD");
 		price.setValue(BigDecimal.valueOf(20.2));
 		
@@ -71,6 +87,11 @@ public class ProductServiceTest {
 		product.setName("The Big Lebowski (Blu-ray)");
 	}
 	
+	/**
+	 * Gets the product by id test.
+	 *
+	 * @return the product by id test
+	 */
 	@Test
 	public void getProductByIdTest(){
 		
@@ -84,6 +105,9 @@ public class ProductServiceTest {
 		verify(productIntegrator).getProductDetailsById(Integer.valueOf(123456));
 	}
 	
+	/**
+	 * Update product price by id test.
+	 */
 	@Test
 	public void updateProductPriceByIdTest(){
 		

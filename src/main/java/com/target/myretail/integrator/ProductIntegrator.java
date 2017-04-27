@@ -11,17 +11,31 @@ import com.target.myretail.domain.redsky.Product;
 import com.target.myretail.domain.redsky.ProductDescription;
 import com.target.myretail.domain.redsky.RedSkyProduct;
 
+/**
+ * The Class ProductIntegrator.
+ */
 @Component
 public class ProductIntegrator {
 	
-	private String externalApiURL = "http://redsky.target.com/v2/pdp/tcin";
+	/** The external api URL. */
+	@Value("${externalApiURL}")
+	private String externalApiURL;
 	
-	private String externalApiParams= "?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics";
+	/** The external api params. */
+	@Value("${externalApiParams}")
+	private String externalApiParams;
 	
 	
+	/** The rest template. */
 	@Autowired
 	RestTemplate restTemplate;
 	
+	/**
+	 * Gets the product details by id.
+	 *
+	 * @param id the id
+	 * @return the product details by id
+	 */
 	@HystrixCommand(fallbackMethod = "defaultProductName")
 	public RedSkyProduct getProductDetailsById(Integer id){
 		
@@ -30,6 +44,12 @@ public class ProductIntegrator {
 		return redSkyProduct;
 	}
 	
+	/**
+	 * Default product name.
+	 *
+	 * @param id the id
+	 * @return the red sky product
+	 */
 	public RedSkyProduct defaultProductName(Integer id){
 		
 		ProductDescription productDescription = new ProductDescription();

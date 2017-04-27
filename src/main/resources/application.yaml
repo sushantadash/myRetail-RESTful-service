@@ -5,6 +5,8 @@ spring:
     cassandra:
       keyspace-name: myretail
       contact-points: localhost
+externalApiURL: "http://redsky.target.com/v2/pdp/tcin"
+externalApiParams: "?excludes=taxonomy,price,promotion,bulk_ship,rating_and_review_reviews,rating_and_review_statistics,question_answer_statistics"
 logging: 
   level:
     ROOT: INFO
@@ -13,7 +15,7 @@ hystrix:
     threadpool.default.coreSize: 20
     threadpool.HystrixThreadPoolKey.coreSize: 20
     command:
-        processRedSkyCmdKey:
+        processPayeeCmdKey:
            sleepWindowInMilliseconds: 5000
            requestVolumeThreshold: 20
            errorThresholdPercentage: 50

@@ -13,18 +13,27 @@ import com.target.myretail.infrastructure.data.ProductPriceRepository;
 import com.target.myretail.integrator.ProductIntegrator;
 
 /**
- * @author sushantakumar
+ * The Class ProductService.
  *
+ * @author sushantakumar
  */
 @Service
 public class ProductService {
 	
+	/** The product integrator. */
 	@Autowired
 	ProductIntegrator productIntegrator;
 	
+	/** The product price repository. */
 	@Autowired
 	ProductPriceRepository  productPriceRepository;
 	
+	/**
+	 * Gets the product by id.
+	 *
+	 * @param id the id
+	 * @return the product by id
+	 */
 	public Product getProductById(Integer id){
 	
 		Product product = null;
@@ -46,13 +55,20 @@ public class ProductService {
 		return product;
 	}
 
+	/**
+	 * Update product price by id.
+	 *
+	 * @param id the id
+	 * @param product the product
+	 */
 	public void updateProductPriceById(Integer id, Product product) {
 		
 		Price price = product.getCurrent_price();
 		
-		price.setProduct_id(id);
+		price.setProductId(id);
 		
 		productPriceRepository.save(price);
+		
 		// TODO Auto-generated method stub
 		
 	}

@@ -10,32 +10,60 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EnvironmentalSegmentation.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "is_lead_disclosure"
 })
 public class EnvironmentalSegmentation {
 
+    /** The is lead disclosure. */
     @JsonProperty("is_lead_disclosure")
     private Boolean isLeadDisclosure;
+    
+    /** The additional properties. */
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    /**
+     * Gets the checks if is lead disclosure.
+     *
+     * @return the checks if is lead disclosure
+     */
     @JsonProperty("is_lead_disclosure")
     public Boolean getIsLeadDisclosure() {
         return isLeadDisclosure;
     }
 
+    /**
+     * Sets the checks if is lead disclosure.
+     *
+     * @param isLeadDisclosure the new checks if is lead disclosure
+     */
     @JsonProperty("is_lead_disclosure")
     public void setIsLeadDisclosure(Boolean isLeadDisclosure) {
         this.isLeadDisclosure = isLeadDisclosure;
     }
 
+    /**
+     * Gets the additional properties.
+     *
+     * @return the additional properties
+     */
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
+    /**
+     * Sets the additional property.
+     *
+     * @param name the name
+     * @param value the value
+     */
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);

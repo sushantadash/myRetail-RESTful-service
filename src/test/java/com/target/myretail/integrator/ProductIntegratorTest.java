@@ -24,18 +24,34 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.target.myretail.domain.redsky.RedSkyProduct;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProductIntegratorTest.
+ */
 public class ProductIntegratorTest {
 	
+	/** The product integrator. */
 	@InjectMocks
 	ProductIntegrator productIntegrator;
 	
+	/** The rest template. */
 	@Mock
 	RestTemplate restTemplate;
 	
+	/** The mapper. */
 	ObjectMapper mapper;	
 	
+	/** The red sky product. */
 	RedSkyProduct redSkyProduct;
 	
+	/**
+	 * Setup.
+	 *
+	 * @throws JsonParseException the json parse exception
+	 * @throws JsonMappingException the json mapping exception
+	 * @throws FileNotFoundException the file not found exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@Before
 	public void setup() throws JsonParseException, JsonMappingException, FileNotFoundException, IOException{
 		MockitoAnnotations.initMocks(this);
@@ -43,6 +59,11 @@ public class ProductIntegratorTest {
 		redSkyProduct = mapper.readValue(new FileReader(ResourceUtils.getFile(this.getClass().getResource("/RedSkyProductResponse.json"))), RedSkyProduct.class);
 	}
 
+	/**
+	 * Gets the product details by id success test.
+	 *
+	 * @return the product details by id success test
+	 */
 	@Test
 	public void getProductDetailsById_SuccessTest()
 	{
@@ -56,6 +77,11 @@ public class ProductIntegratorTest {
 		
 	}
 	
+	/**
+	 * Gets the product details by id failure test.
+	 *
+	 * @return the product details by id failure test
+	 */
 	@Test
 	public void getProductDetailsById_failureTest()
 	{

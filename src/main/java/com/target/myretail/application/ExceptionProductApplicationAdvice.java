@@ -17,14 +17,22 @@ import com.target.myretail.domain.ErrorResponse;
 import com.target.myretail.exception.ProductException;
 
 /**
- * @author sushantakumar
+ * The Class ExceptionProductApplicationAdvice. This is spring Advice class for handling exceptions
  *
+ * @author sushantakumar
  */
 @ControllerAdvice
 public class ExceptionProductApplicationAdvice {
 	
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionProductApplicationAdvice.class);
 
+	/**
+	 * Invalid format exception handler.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	@ExceptionHandler(value = {InvalidFormatException.class, IllegalStateException.class, IllegalArgumentException.class})	
 	public ResponseEntity<ErrorResponse> InvalidFormatExceptionHandler(RuntimeException ex) {
@@ -40,6 +48,12 @@ public class ExceptionProductApplicationAdvice {
 		return new ResponseEntity<ErrorResponse>(error, HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Product exception handler.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	@ExceptionHandler(ProductException.class)	
 	public ResponseEntity<ErrorResponse> ProductExceptionHandler(Exception ex) {
@@ -56,6 +70,12 @@ public class ExceptionProductApplicationAdvice {
 	}
 
 	
+	/**
+	 * Exception handler.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
 	@ExceptionHandler(Exception.class)
 	@Order(Ordered.LOWEST_PRECEDENCE)
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
